@@ -24,7 +24,7 @@ const
 
    MAX_DATA_BYTES =          64; // max number of data bytes in incoming messages
 
-  // message command bytes (128-255/0x80-0xFF)
+  // message command bytes (128-255/$80-$FF)
 
    DIGITAL_MESSAGE =         $90; // send data for a digital port (collection of 8 pins)
    ANALOG_MESSAGE =          $E0; // send data for an analog pin (or PWM)
@@ -43,7 +43,6 @@ const
   // extended command set using sysex (0-127/$00-$7F)
   { $00-$0F redevved for udev-defined commands }
 
-   SERIAL_DATA =             $60; // communicate with devial devices, including other boards
    ENCODER_DATA =            $61; // reply with encoders current positions
    devVO_CONFIG =            $70; // set max angle, minPulse, maxPulse, freq
    STRING_DATA =             $71; // a string message with 14-bits per char
@@ -82,6 +81,39 @@ const
    PIN_MODE_IGNORE =         $7F; // pin configured to be ignored by digitalWrite and capabilityResponse
 
    TOTAL_PIN_MODES =         13;
+
+   // serial constants: communicate with sevial devices, including other boards
+   HW_SERIAL0 =              $00; //(for using Serial when another transport is used for the Firmata Stream)
+   HW_SERIAL1 =              $01;
+   HW_SERIAL2 =              $02;
+   HW_SERIAL3 =              $03;
+
+   SW_SERIAL0 =              $08;
+   SW_SERIAL1 =              $09;
+   SW_SERIAL2 =              $0A;
+   SW_SERIAL3 =              $0B;
+
+   SERIAL_MESSAGE =          $60;
+   SERIAL_CONFIG =           $10;
+   SERIAL_WRITE =            $20;
+   SERIAL_READ =             $30;
+   SERIAL_REPLY =            $40;
+   SERIAL_CLOSE =            $50;
+   SERIAL_FLUSH =            $60;
+   SERIAL_LISTEN =           $70;
+   // Where the pin mode = "Serial" and the pin resolution = one of the following:
+   RES_RX0 =                 $00;
+   RES_TX0 =                 $01;
+   RES_RX1 =                 $02;
+   RES_TX1 =                 $03;
+   RES_RX2 =                 $04;
+   RES_TX2 =                 $05;
+   RES_RX3 =                 $06;
+   RES_TX3 =                 $07;
+
+   //read modes
+   SERIAL_READ_MODE_CONT =   $00;
+   SERIAL_READ_MODE_STOP =   $01;
 
 implementation
 
